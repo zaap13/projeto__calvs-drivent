@@ -19,10 +19,6 @@ export async function createBooking(req: AuthenticatedRequest, res: Response) {
 
   const { roomId } = req.body;
 
-  if (!roomId) {
-    return res.sendStatus(httpStatus.BAD_REQUEST);
-  }
-
   try {
     const booking = await bookingService.createBooking(userId, roomId);
 
@@ -41,10 +37,6 @@ export async function updateBooking(req: AuthenticatedRequest, res: Response) {
   const { roomId } = req.body;
 
   const { bookingId } = req.params;
-
-  if (!roomId) {
-    return res.sendStatus(httpStatus.BAD_REQUEST);
-  }
 
   try {
     const booking = await bookingService.updateBooking(userId, roomId, Number(bookingId));
